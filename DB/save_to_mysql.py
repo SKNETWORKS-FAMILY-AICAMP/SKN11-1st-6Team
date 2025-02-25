@@ -7,8 +7,8 @@ import statistics
 conn = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="1092",
-    database="mydb"
+    password="030617",
+    database="not_temu_project"
 )
 cursor = conn.cursor()
 
