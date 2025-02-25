@@ -42,6 +42,15 @@ region_map = {
 
 df_clean['지역'] = df_clean['지역'].replace(region_map)
 
+car_reg_df = pd.read_csv('car_reg_202501.csv')
+car_reg_df.rename(columns={'시도명': '지역'}, inplace=True)
+car_reg_df['지역'] = car_reg_df['지역'].map(region_map)
+
+merged_df = pd.merge( df_clean, car_reg_df, left_on='지역', right_on='지역', how='left')
+
+# 결과 출력
+print(merged_df)
+
 df_density = df_clean.drop(columns=['인구'])
 
 # engine = create_engine('mysql+pymysql://username:password@localhost/mydatabase')    # db에 따라 수정 요망
