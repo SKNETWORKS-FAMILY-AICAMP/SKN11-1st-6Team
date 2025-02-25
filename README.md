@@ -56,11 +56,14 @@
 - 개발환경 및 도구
 
 | ![alt text](이미지/image5.png) | ![alt text](이미지/image-6.png) | ![alt text](이미지/image-7.png) | ![alt text](이미지/image-8.png) |
+| --- | --- | --- | ---|
 
 - UI
 
 | ![alt text](이미지/image-9.png) |
+| --- |
 
 - 데이터 수집 및 처리
 
 | ![alt text](이미지/image-10.png) | ![alt text](이미지/image-11.png) | ![alt text](이미지/image-12.png) |
+| --- | --- | --- |
