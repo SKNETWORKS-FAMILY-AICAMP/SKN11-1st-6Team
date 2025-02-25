@@ -65,8 +65,8 @@
 
 - 데이터 수집 및 처리
 
-| ![alt text](이미지/image-10.png) | ![alt text](이미지/image-11.png) | ![alt text](이미지/image-12.png) | ![alt text](이미지/image-14.png) |
-| --- | --- | --- | --- |
+| ![alt text](이미지/image-10.png) | ![alt text](이미지/image-11.png) | ![alt text](이미지/image-12.png) |
+| --- | --- | --- | 
 
 --- 
 
