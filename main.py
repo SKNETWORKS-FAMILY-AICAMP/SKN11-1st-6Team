@@ -20,14 +20,14 @@ engine = create_engine(connection_string)
 table_name = 'population_data'  
 query = f"SELECT * FROM {table_name}"
 
-merged_df = pd.read_sql(query, engine)
+merged_df1 = pd.read_sql(query, engine)
 
 geojson_path = "korea_map_simplified.geojson"
 with open(geojson_path, encoding="utf-8") as f:
     korea_geojson = json.load(f)
 
 fig = px.choropleth_mapbox(
-    merged_df,
+    merged_df1,
     geojson=korea_geojson,
     locations="city_name",  
     featureidkey="properties.CTP_KOR_NM", 
@@ -42,6 +42,13 @@ fig = px.choropleth_mapbox(
 fig.update_layout(
     width=700,
     height=1000
+)
+
+fig.update_traces(
+    hovertemplate=
+    '<b>%{customdata[0]}</b><br>'
+    '인구밀도: %{z}<br>'
+    '차량등록수: %{customdata[2]}<br>' 
 )
 
 st.title("Chart Title")
