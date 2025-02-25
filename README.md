@@ -48,3 +48,16 @@
     - 해당 데이터를 활용하여 공유 모빌리티 업체 및 지자체가 보다 효과적인 교통 정책을 수립할 수 있도록 돕습니다.
 
 본 프로젝트는 데이터 기반의 분석과 실용적인 정보 제공을 통해 공유 모빌리티 생태계를 더욱 효율적으로 운영할 수 있도록 기여할 것입니다.
+
+---
+
+## 🖥️Tech Stack (기술 스택)
+
+- 개발환경 및 도구
+| ![alt text](이미지/image5.png) | ![alt text](이미지/image-6.png) | ![alt text](이미지/image-7.png) | ![alt text](이미지/image-8.png) |
+
+- UI
+| ![alt text](이미지/image-9.png) |
+
+- 데이터 수집 및 처리
+| ![alt text](이미지/image-10.png) | ![alt text](이미지/image-11.png) | ![alt text](이미지/image-12.png) |
