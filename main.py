@@ -11,13 +11,13 @@ username = 'root'
 password = '1092' 
 host = 'localhost'  
 port = '3306' 
-database = 'mydb' 
+database = 'mydb'     # 해당 부분 db에 맞게 변경
 
 connection_string = f"mysql+pymysql://{username}:{password}@{host}:{port}/{database}"
 
 engine = create_engine(connection_string)
 
-table_name = 'population_data'  
+table_name = 'population_data'  # db에 맞게 변경
 query = f"SELECT * FROM {table_name}"
 
 chart_df = pd.read_sql(query, engine)
