@@ -20,14 +20,14 @@ engine = create_engine(connection_string)
 table_name = 'population_data'  
 query = f"SELECT * FROM {table_name}"
 
-merged_df1 = pd.read_sql(query, engine)
+chart_df = pd.read_sql(query, engine)
 
 geojson_path = "korea_map_simplified.geojson"
 with open(geojson_path, encoding="utf-8") as f:
     korea_geojson = json.load(f)
 
 fig = px.choropleth_mapbox(
-    merged_df1,
+    chart_df,
     geojson=korea_geojson,
     locations="city_name",  
     featureidkey="properties.CTP_KOR_NM", 
