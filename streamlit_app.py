@@ -1,7 +1,4 @@
 import streamlit as st
-import test
-
-test.run_data_preprocessing_and_insert()
 
 pages = {
     "Main": [
