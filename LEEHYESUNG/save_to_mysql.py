@@ -14,23 +14,23 @@ cursor = conn.cursor()
 def insert_data(df):
     for _, row in df.iterrows():
         cursor.execute("""
-            INSERT INTO CITY (city_num, city, total) 
-            VALUES (%s, %s, %s)
-        """, (row["등록연도"], row["차종"], row["등록대수"]))
+            INSERT INTO city_test (city, total) 
+            VALUES (%s, %s)
+        """, (row["City"], row["Toal"]))
     conn.commit()
 
 # 데이터 불러오기 함수
-def get_data():
-    cursor.execute("SELECT * FROM CITY")
-    result = cursor.fetchall()
-    return pd.DataFrame(result, columns=["id", "year", "car_type", "registration_count"])
+# def get_data():
+#     cursor.execute("SELECT * FROM CITY")
+#     result = cursor.fetchall()
+#     return pd.DataFrame(result, columns=["id", "year", "car_type", "registration_count"])
 
 # CSV 파일 읽어서 DB에 저장
 df = pd.read_csv("/Users/comet39/SKN_bootcamp/first_project/201001_total.csv")
 data_list = df.values.tolist()
 print(data_list)  # [[row1_col1, row1_col2, ...], [row2_col1, row2_col2, ...], ...]
 
-# insert_data(df)
+insert_data(df)
 
 # 데이터 조회 확인
 # print(get_data())
