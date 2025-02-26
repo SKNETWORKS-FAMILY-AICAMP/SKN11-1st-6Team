@@ -37,3 +37,6 @@ question TEXT,
 answer TEXT,
 foreign key(vehicle_id) references vehicle (vehicle_id)
 )engine = innodb;
+
+INSERT INTO license (is_license) VALUES (0);
+INSERT INTO license (is_license) VALUES (1);
