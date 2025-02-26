@@ -3,19 +3,30 @@ from sqlalchemy import create_engine
 import pandas as pd
 
 # MySQL 연결 정보
-username = 'root'
-password = '030617'
-host = 'localhost'
-port = '3306'
-database = 'not_temu_project'
+host="localhost"
+user="root"
+password="030617"
+database="not_temu_project"
 
 # SQLAlchemy 연결 문자열
-connection_string = f"mysql+pymysql://{username}:{password}@{host}:{port}/{database}"
+connection_string = f"mysql+pymysql://{user}:{password}@{host}:3306/{database}"
 engine = create_engine(connection_string)
 
-# 🔍 도시 검색 기능
-st.title("🚗 도시별 운전면허 및 차량 밀도 통계")
+# custom_css = """
+# <style>
+#     .stButton > button {
+#         border: none;
+#         box-shadow: none;
+#     }
+# </style>
+# """
 
+# # CSS 적용
+# st.markdown(custom_css, unsafe_allow_html=True)
+
+# 🔍 도시 검색 기능
+st.title("도시별 운전면허 및 차량 밀도 현황")
+st.subheader("나에게 맞는 창업 도시는?")
 # 🔄 세션 상태 초기화
 if "search_city" not in st.session_state:
     st.session_state.search_city = ""
@@ -76,6 +87,9 @@ ORDER BY (c.car_amount / NULLIF(c.density, 0)) ASC;
 """
 
 # 검색 결과 또는 전체 데이터 표시 로직
+def highlight_recommendation(s):
+    return ['background-color: yellow' if s.name == '추천' else '' for _ in s]
+
 if search_city:
     try:
         search_df = pd.read_sql(search_query, engine, params=(f"%{search_city}%",))
@@ -84,26 +98,29 @@ if search_city:
         if search_df.empty:
             st.warning("해당 도시의 데이터가 없습니다.")
         else:
-            # 검색 결과 제목과 리셋 버튼을 한 줄에 배치
             col1, col2 = st.columns([5, 1])
             with col1:
                 st.subheader(f"📍 '{search_city}' 검색 결과")
             with col2:
-                st.button("🔄 리셋", on_click=reset_search)  # 검색 리셋 버튼
+                st.button("🔄 리셋", on_click=reset_search)
             
-            st.dataframe(search_df)
+            # 추천 컬럼 강조 스타일 적용
+            styled_search_df = search_df.style.apply(highlight_recommendation, subset=['추천'])
+            st.dataframe(styled_search_df)
     except Exception as e:
         st.error(f"데이터를 불러오는 중 오류 발생: {e}")
 else:
     try:
-        # 전체 데이터 제목과 리셋 버튼을 한 줄에 배치
         col1, col2 = st.columns([5, 1])
         with col1:
             st.subheader("📊 전체 도시 데이터")
         with col2:
-            st.button("🔄 리셋", on_click=reset_search)  # 전체 데이터 리셋 버튼
+            st.button("리셋", on_click=reset_search)
         
         full_df = pd.read_sql(full_query, engine)
-        st.dataframe(full_df)  # 검색 전 전체 데이터 표시
+        
+        # 추천 컬럼 강조 스타일 적용
+        styled_full_df = full_df.style.apply(highlight_recommendation, subset=['추천'])
+        st.dataframe(styled_full_df)
     except Exception as e:
         st.error(f"데이터를 불러오는 중 오류 발생: {e}")
