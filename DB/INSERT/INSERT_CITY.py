@@ -33,17 +33,17 @@ region_map = {
 }
 
 # 첫 번째 CSV 파일 (car_amount)
-df_car_amount = pd.read_csv('car_reg_202501.csv')
+df_car_amount = pd.read_csv('데이터/car_reg_202501.csv')
 df_car_amount['시도명'] = df_car_amount['시도명'].replace(region_map)
 df_car_amount.rename(columns={'차량합계': 'Total'}, inplace=True)
 df_car_amount.rename(columns={'시도명': 'City'}, inplace=True)
 
 # 두 번째 CSV 파일 (license)
-df_license = pd.read_csv('license.csv', encoding='UTF-8')
+df_license = pd.read_csv('데이터/license.csv', encoding='UTF-8')
 df_license['City'] = df_license['City'].replace(region_map)
 
 # 두 번째 CSV 파일 (population)
-df_population = pd.read_csv('population_densityl.csv')
+df_population = pd.read_csv('데이터/population_densityl.csv')
 df_population['City'] = df_population['City'].replace(region_map)
 
 # 두 CSV 파일을 'city_name'을 기준으로 병합

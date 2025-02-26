@@ -18,6 +18,11 @@ query = f"SELECT * FROM {table_name}"
 
 chart_df = pd.read_sql(query, engine)
 
+#faq table read
+faq_table = 'faq'
+faq_query = f'select * from {faq_table}'
+faq = pd.read_sql(faq_query, engine)
+
 
 pages = {
     "Main": [
@@ -32,6 +37,7 @@ pages = {
         st.Page("faq.py", title="FAQ")
     ]
 }
+
 
 
 pg = st.navigation(pages)
