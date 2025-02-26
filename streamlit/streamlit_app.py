@@ -18,13 +18,15 @@ query = f"SELECT * FROM {table_name}"
 
 chart_df = pd.read_sql(query, engine)
 
+
 pages = {
     "Main": [
-        st.Page("main.py", title="Create your account"),
+        st.Page("main.py", title="🏠Home"),
     ],
     "Statistics": [
-        st.Page("stats1.py", title="Statistics Page 1"),
-        st.Page("stats2.py", title="Statistics Page 2"),
+        st.Page("stats1.py", title="전국 자동차 등록 현황"),
+        st.Page("stats2.py", title="전국 인구 밀도 대비 자등차 등록 현황"),
+        st.Page("license_stats.py", title="나에게 맞는 창업 도시는?"),
     ],
     "FAQ": [
         st.Page("faq.py", title="FAQ")

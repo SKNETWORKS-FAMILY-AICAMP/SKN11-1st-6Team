@@ -9,8 +9,8 @@ chart_df['density_ratio'] = chart_df['density'] / chart_df['car_amount']
 fig = px.pie(chart_df, names='city_name', values='density_ratio', title="전국 인구 밀도 대비 자동차 등록 현황")
 
 fig.update_layout(
-    width=800,  
-    height=800,  
+    width=600,  
+    height=600,  
 )
 
 st.plotly_chart(fig)

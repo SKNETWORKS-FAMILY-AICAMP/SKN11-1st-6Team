@@ -20,14 +20,14 @@ fig = px.choropleth_mapbox(
     color="density",
     color_continuous_scale="Blues",
     mapbox_style="carto-positron",
-    center={"lat": 36.5, "lon": 127.5},
+    center={"lat": 36, "lon": 127.5},
     zoom=6,
     hover_data=["city_name", "density", "car_amount"]
 )
 
 fig.update_layout(
     width=700,
-    height=1000,
+    height=800,
     hoverlabel=dict(  # 🔹 마우스 오버 시 글씨 크기 조정
         font=dict(size=20, color="white"),  # 글씨 크기와 색상
         bgcolor="black",  # 배경색 설정
